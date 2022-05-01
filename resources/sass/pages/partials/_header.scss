@@ -5,83 +5,6 @@ header {
   border-bottom: solid 3px $primary;
 }
 
-.user-right-header {
-  @include media-breakpoint-down(lg) {
-    display: none;
-  }
-
-  align-items: center;
-  display: flex;
-
-  .avatar {
-    background-color: $primary;
-    border-radius: 50px;
-    cursor: pointer;
-    display: flex;
-    height: 40px;
-    justify-content: center;
-    position: relative;
-    width: 40px;
-
-    &:hover {
-      background-color: $primary-hover;
-    }
-
-    i {
-      color: $white;
-      font-size: 30px;
-      position: relative;
-      top: -2px;
-    }
-
-    .menu-avatar {
-      background-color: $white;
-      border-radius: 6px;
-      border-top-right-radius: 0;
-      border: solid 1px $border-color;
-      bottom: -80px;
-      min-height: 65px;
-      min-width: 150px;
-      padding: 10px;
-      position: absolute;
-      right: 0px;
-
-      a {
-        color: $font-color;
-        display: block;
-        font-weight: bold;
-        padding: 2px 0;
-        text-align: right;
-        text-decoration: none;
-
-        &:hover {
-          color: $primary;
-        }
-      }
-
-      .logout {
-        color: $red-500;
-
-        &:hover {
-          color: $red-500;
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-
-  .welcome {
-    color: $font-color;
-    margin-right: 10px;
-    text-align: right;
-
-    span:first-child {
-      display: block;
-      font-weight: bold;
-    }
-  }
-}
-
 .navbar {
   color: $font-color;
   font-weight: bold;
@@ -122,7 +45,6 @@ header {
       text-decoration: underline;
     }
   }
-
 }
 
 .sub-menu {
@@ -150,11 +72,11 @@ header {
     background-color: $gray-700;
     border-radius: 6px;
     display: flex;
-    height:40px;
+    height: 40px;
     justify-content: center;
     width: 40px;
 
-    i{
+    i {
       color: white;
       font-size: 20px;
       position: relative;
@@ -189,5 +111,82 @@ header {
   .btn-filter {
     font-size: 17px;
     margin-right: 10px;
+  }
+}
+
+.user-right-header {
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+
+  align-items: center;
+  display: flex;
+
+  .avatar {
+    background-color: $primary;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    position: relative;
+    width: 40px;
+
+    &:hover {
+      background-color: $primary-hover;
+    }
+
+    i {
+      color: $white;
+      font-size: 30px;
+      position: relative;
+      top: -2px;
+    }
+
+    .menu-avatar {
+      background-color: $white;
+      border-radius: 6px;
+      border-top-right-radius: 0;
+      border: solid 1px $border-color;
+      bottom: -80px;
+      min-height: 65px;
+      min-width: 150px;
+      padding: 10px;
+      position: absolute;
+      right: 0;
+
+      a {
+        color: $font-color;
+        display: block;
+        font-weight: bold;
+        padding: 2px 0;
+        text-align: right;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+
+      .logout {
+        color: $red-500;
+
+        &:hover {
+          color: $red-500;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .welcome {
+    color: $font-color;
+    margin-right: 10px;
+    text-align: right;
+
+    span:first-child {
+      display: block;
+      font-weight: bold;
+    }
   }
 }
