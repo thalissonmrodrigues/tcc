@@ -24,7 +24,7 @@ if(info_icon && file_info){
 const btn_filter = document.querySelector('.btn-filter');
 const filter_area = document.querySelector('.filter-area');
 if(btn_filter && filter_area){
-  btn_filter.addEventListener('click', function(e) {
+  btn_filter.addEventListener('click', function() {
     let screen_width = window.screen.width;
 
     if(filter_area.classList.contains("d-none")) {
@@ -49,7 +49,7 @@ let arra_btn_card_flip = document.querySelectorAll('.btn-card-flip');
 if(arra_btn_card_flip) {
   arra_btn_card_flip.forEach(function(btn_card_flip) {
     // Add click event.
-    btn_card_flip.addEventListener('click', function(e) {
+    btn_card_flip.addEventListener('click', function() {
       let card = document.querySelector('.card');
       let back = document.querySelector('.back');
 
@@ -89,7 +89,7 @@ if(arra_btn_card_flip) {
  * @param { class that will be shown or hidden } showAndHide
  */
 function toggleClick(clicked, showAndHide) {
-  clicked.addEventListener('click', function(e) {
+  clicked.addEventListener('click', function() {
     showAndHide.classList.toggle("d-none");
 });
 }
