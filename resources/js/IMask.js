@@ -1,4 +1,3 @@
-let IMask = require('imask');
 
 if(document.getElementById('input-delivery-date')) {
   IMask(
@@ -14,6 +13,15 @@ if(document.getElementById('nota')) {
     document.getElementById('nota'),
     {
       mask:'0.00',
+    }
+  );
+}
+
+if (document.getElementById('validaRGM')){
+  IMask(
+    document.getElementById('validaRGM'),
+    {
+      mask: '00000000-0',
     }
   );
 }

@@ -20,6 +20,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
+Route::post('/', function () {
+    return view('home', [
+        'active_menu_header' => 'home'
+    ]);
+})->name('homePost');
+
 // Login.
 Route::get('/login', function () {
     return view('login');

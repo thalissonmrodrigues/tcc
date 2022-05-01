@@ -8,4 +8,5 @@ require('./IMask');
 require('./toggles');
 require('./tabs');
 require('./functions');
+require('./validation');
 
