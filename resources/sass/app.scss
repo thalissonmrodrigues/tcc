@@ -1,26 +1,26 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Bootstrap
-@import '~bootstrap-icons/font/bootstrap-icons';
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap-icons/font/bootstrap-icons";
+@import "~bootstrap/scss/bootstrap";
 
-//FontAwesome
-@import '~@fortawesome/fontawesome-free/scss/brands';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+// FontAwesome
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
 // Variables
-@import 'variables/variables';
-@import 'variables/generateAllColors';
-@import 'variables/btn-custom';
+@import "variables/variables";
+@import "variables/generateAllColors";
+@import "variables/btn-custom";
 
 // Views
-@import 'pages/home';
-@import 'pages/form/view-work';
-@import 'pages/form/form-add-edit';
-@import 'pages/login';
-@import 'pages/partials/footer';
-@import 'pages/partials/header';
-@import 'pages/listing/listing';
+@import "pages/home";
+@import "pages/form/view-work";
+@import "pages/form/form-add-edit";
+@import "pages/login";
+@import "pages/partials/footer";
+@import "pages/partials/header";
+@import "pages/listing/listing";
