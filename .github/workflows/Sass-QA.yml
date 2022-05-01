@@ -1,0 +1,14 @@
+name: Sass-QA
+on: [push]
+
+jobs:
+  linters:
+    name: StyleLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: npm install
+      - name: Run StyleLint
+        run: npx stylelint "resources/**/*.scss"

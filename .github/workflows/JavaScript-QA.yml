@@ -1,0 +1,12 @@
+name: JavaScript-QA
+on: [push]
+
+jobs:
+  ESlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install npm modules
+        run: npm install
+      - name: Run ESLint
+        run: ./node_modules/.bin/eslint resources/
