@@ -1,3 +1,5 @@
+let IMask = require('imask');
+
 if(document.getElementById('input-delivery-date')) {
   IMask(
     document.getElementById('input-delivery-date'),

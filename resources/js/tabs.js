@@ -14,7 +14,7 @@ function createTabs(arrayTabs) {
   if(tabs) {
     tabs.forEach(function(tab){
       // Add click event to tabs
-      tab.addEventListener('click', function(e) {
+      tab.addEventListener('click', function() {
         //Select tab clicked and tables.
         let tab_active = tab;
         let tables = document.querySelectorAll('table');
