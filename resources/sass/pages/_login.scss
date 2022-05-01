@@ -1,3 +1,43 @@
+.nsa-info {
+  align-items: center;
+  background-color: $primary;
+  border-radius: 50px;
+  border: none;
+  bottom: 20px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  width: 40px;
+
+  > i {
+    color: $white;
+    font-size: 38px;
+    position: relative;
+    top: 3px;
+  }
+
+  div {
+    background-color: $white;
+    border-radius: 6px;
+    border: solid 1px $border-color;
+    padding: 10px;
+    position: absolute;
+    right: 40px;
+    top: -110px;
+
+    span {
+      color: $primary;
+      font-weight: bold;
+    }
+  }
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+}
+
 .box-login {
   @include media-breakpoint-down(sm) {
     min-height: 100px;
@@ -11,7 +51,7 @@
   justify-content: center;
   min-height: 230px;
   min-width: 350px;
-  padding: 50px 20px 30px 20px;
+  padding: 50px 20px 30px;
   position: relative;
   text-align: center;
 
@@ -52,7 +92,8 @@
       margin-bottom: 15px;
       max-height: 30px;
 
-      div {
+      .user-input,
+      .block-input {
         align-items: center;
         background-color: $gray-400;
         border-bottom-left-radius: 6px;
@@ -63,7 +104,7 @@
         justify-content: center;
         padding: 0 10px;
 
-        i {
+        > i {
           color: $font-color;
           position: relative;
           top: 1px;
@@ -110,45 +151,5 @@
         background-color: $primary-hover;
       }
     }
-  }
-}
-
-.nsa-info {
-  align-items: center;
-  background-color: $primary;
-  border-radius: 50px;
-  border: none;
-  bottom: 20px;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  position: absolute;
-  right: 20px;
-  width: 40px;
-
-  i {
-    color: $white;
-    font-size: 38px;
-    position: relative;
-    top: 3px;
-  }
-
-  div {
-    background-color: $white;
-    border-radius: 6px;
-    border: solid 1px $border-color;
-    padding: 10px;
-    position: absolute;
-    right: 40px;
-    top: -110px;
-
-    span {
-      color: $primary;
-      font-weight: bold;
-    }
-  }
-
-  &:hover {
-    background-color:$primary-hover;
   }
 }

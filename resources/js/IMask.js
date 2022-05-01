@@ -1,3 +1,4 @@
+import IMask from 'imask';
 
 if(document.getElementById('input-delivery-date')) {
   IMask(
