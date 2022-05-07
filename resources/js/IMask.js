@@ -18,11 +18,11 @@ if(document.getElementById('nota')) {
   );
 }
 
-if (document.getElementById('validaRGM')){
+if (document.getElementById('inputRGM')){
   IMask(
-    document.getElementById('validaRGM'),
+    document.getElementById('inputRGM'),
     {
-      mask: '00000000-0',
+      mask: '0000000-0',
     }
   );
 }

@@ -19,14 +19,14 @@
     <div class="col-md-6 ps-0">
       <label class="form-label w-100">
         Nome
-        <input required type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
+        <input required id= "nameTeacher" type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
       </label>
     </div>
 
     <div class="col-md-6 ps-0">
       <label class="form-label w-100">
         Sobrenome
-        <input required type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
+        <input required id= "surnameTeacher" type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
       </label>
     </div>
 

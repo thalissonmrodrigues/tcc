@@ -1,26 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
   <title>NSA On-line</title>
-<!-- <script>
-    function somenteNumeros(e) {
-        var charCode = e.charCode ? e.charCode : e.keyCode;
-        // charCode 8 = backspace   
-        // charCode 9 = tab
-        if (charCode != 8 && charCode != 9 ) {
-            // charCode 48 equivale a 0   
-            // charCode 57 equivale a 9
-            if (charCode < 48 || charCode > 57) {
-                return false;
-            }
-            INPUT: onkeypress="return somenteNumeros(event)"
-    }
-  }
-</script> -->
 </head>
 <body>
   <div class="alert d-none" id="aviso"></div> 
@@ -38,14 +23,14 @@
           <div class="user-input">
             <i class="bi bi-person-fill"></i>
           </div>
-          <input id="validaRGM" type="text" placeholder="RGM" name="rgm" required>
+          <input id="inputRGM" type="text" placeholder="RGM" name="rgm" minlength="9" required>
         </label>
            
         <label>
           <div class="block-input">
             <i class="bi bi-lock-fill"></i>
           </div>
-          <input type="password" placeholder="Password" name="password" required>
+          <input required type="password" placeholder="Password" name="password" minlength="6">
         </label>
 
         <input id="btnLogin" type="submit" value="ENTRAR">
@@ -64,5 +49,4 @@
   <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
-
 

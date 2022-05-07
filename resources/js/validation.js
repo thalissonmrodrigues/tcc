@@ -1,34 +1,55 @@
-//validando formulario login
+// variaveis para validação
+let input_name_subject = document.querySelector('#subjectName');
+let input_name_student = document.querySelector('#studentName');
+let input_surname_student = document.querySelector('#studentSurname');
+let input_name_teacher = document.querySelector('#nameTeacher');
+let input_surname_teacher = document.querySelector('#surnameTeacher');
+let input_name_config= document.querySelector('#configName');
+let input_surname_config= document.querySelector('#configSurname');
 
-let btn_login = document.querySelector('#btnLogin');
-let form_login = document.querySelector('#formLogin');
-let input_rgm = document.querySelector('#validaRGM');
+// valida nome materia, nome e sobrenome aluno, nome e sobrenome professor
+if (input_name_subject) {
+    validationText(input_name_subject);
+} 
 
-if (btn_login && form_login && input_rgm){
-    btn_login.addEventListener('click', function(e){
-        e.preventDefault();
-        if (input_rgm.value.length < 8){
-            let aviso = document.querySelector('#aviso');
-            aviso.classList.add('alert-danger');
-            aviso.classList.remove('d-none');
-            aviso.innerHTML = 'RGM inválido';
-            input_rgm.focus();
-        }
-        else {
-            form_login.submit();
-        }
-    });
+if (input_name_student) {
+    validationText(input_name_student);
+} 
+
+if (input_surname_student) { 
+    validationText(input_surname_student);
 }
 
-// valida nome materia
-let input_materia = document.querySelector('#nomeMateria');
-let form_materia = document.querySelector('#formMateria');
-let btn_add_materia = document.querySelector('#btnAddMateria');
+if (input_name_teacher) {
+    validationText(input_name_teacher);
+}
 
-if (input_materia && form_materia && btn_add_materia){
-    btn_add_materia.addEventListener('click', function(e){
-        e.preventDefault();
-        if( input_materia )
+if (input_surname_teacher) {
+    validationText(input_surname_teacher);
+}
+
+if (input_name_config) {
+    validationText(input_name_config);
+}
+
+if (input_surname_config) {
+    validationText(input_surname_config);
+}
+
+// funções genéricas para validação
+
+// validar texto 
+function validationText(input_text) {
+    if (input_text) {
+        input_text.addEventListener('keydown', function(e){
     
-    });
+            let arrayNumber = [0,1,2,3,4,5,6,7,8,9];
+    
+            arrayNumber.forEach( function(item){
+                if (parseInt(e.key) == item) {  
+                    e.preventDefault();
+                }
+            })
+        });
+    }
 }
