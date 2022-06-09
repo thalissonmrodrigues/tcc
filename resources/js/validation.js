@@ -1,4 +1,4 @@
-// variaveis para validação
+// Inputs to be validated
 let input_name_subject = document.querySelector('#subjectName');
 let input_name_student = document.querySelector('#studentName');
 let input_surname_student = document.querySelector('#studentSurname');
@@ -7,7 +7,7 @@ let input_surname_teacher = document.querySelector('#surnameTeacher');
 let input_name_config= document.querySelector('#configName');
 let input_surname_config= document.querySelector('#configSurname');
 
-// valida nome materia, nome e sobrenome aluno, nome e sobrenome professor
+
 if (input_name_subject) {
     validationText(input_name_subject);
 } 
@@ -36,9 +36,7 @@ if (input_surname_config) {
     validationText(input_surname_config);
 }
 
-// funções genéricas para validação
-
-// validar texto 
+// Function to validate text fields, prevents entering numbers [0-9]
 function validationText(input_text) {
     if (input_text) {
         input_text.addEventListener('keydown', function(e){

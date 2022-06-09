@@ -9,7 +9,7 @@
 
 {{-- Page Content --}}
 @section('content')
-  <form action="#" id="formConfig" method="POST" class="row g-3 my-2 form-add-edit config">
+  <form action="#" method="POST" class="row g-3 my-2 form-add-edit config">
     @if($permissão)
       <div class="col-md-12 ps-0">
         <label class="form-label w-100">
@@ -36,7 +36,7 @@
      <div class="col-md-12 ps-0">
      <label class="form-label w-100">
         Senha
-        <input required id="configPassword" type="password" class="form-control" minlength="6">
+        <input required type="password" class="form-control" minlength="6">
       </label>
     </div>
 
@@ -48,7 +48,7 @@
     </div>
 
     <div class="col-12 ps-0">
-      <button id="btnConfig" type="submit" class="btn btn-custom">Salvar</button>
+      <button type="submit" class="btn btn-custom">Salvar</button>
       <a href="{{ route('home') }}" class="btn">cancelar</a>
     </div>
   </form>

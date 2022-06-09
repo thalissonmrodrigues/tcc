@@ -15,7 +15,7 @@
 
 {{-- Page Content --}}
 @section('content')
-  <form id="formMateria" action="#" method="POST" class="row g-3 my-2 mx-auto form-add-edit">
+  <form action="#" method="POST" class="row g-3 my-2 mx-auto form-add-edit">
     <div class="col-md-12 ps-0">
       <label class="form-label">
         Nome da matéria

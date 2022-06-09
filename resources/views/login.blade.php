@@ -8,7 +8,6 @@
   <title>NSA On-line</title>
 </head>
 <body>
-  <div class="alert d-none" id="aviso"></div> 
   <div class="container d-flex flex-column justify-content-center align-items-center pb-5 h-100">
     <p class="mb-3 display-5">NSA On-line</p>
 
@@ -17,7 +16,7 @@
         <i class="bi bi-person"></i>
       </span>
 
-      <form  id="formLogin" action="{{ route('homePost') }}" method="POST">
+      <form action="{{ route('homePost') }}" method="POST">
         @csrf
         <label>
           <div class="user-input">
@@ -33,7 +32,7 @@
           <input required type="password" placeholder="Password" name="password" minlength="6">
         </label>
 
-        <input id="btnLogin" type="submit" value="ENTRAR">
+        <input type="submit" value="ENTRAR">
       </form>
     </div>
 
