@@ -21,6 +21,7 @@
         Série
         <select class="form-select">
           <option selected>Selecione a série</option>
+          <option value="9">9º</option>
           <option value="8">8º</option>
           <option value="7">7º</option>
           <option value="6">6º</option>
@@ -35,7 +36,6 @@
           <option selected>Selecione a sigla</option>
           <option value="A">A</option>
           <option value="B">B</option>
-          <option value="C">C</option>
         </select>
       </label>
     </div>
@@ -47,7 +47,25 @@
           <option selected>Selecione o período</option>
           <option value="manha">Manhã</option>
           <option value="tarde">Tarde</option>
-          <option value="noite">Noite</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="col-md-6 ps-0">
+      <label class="form-label w-100">
+      Professor Representante
+        <input required id="representativeTeacherName" type="text" class="form-control">
+      </label>
+    </div>
+
+    <div class="col-md-12 ps-0">
+      <label class="form-label">
+      Professor Representante
+        <select class="form-select">
+          <option selected>Selecione o professor</option>
+          <option value="prof1">Eduardo</option>
+          <option value="prof2">Fabiano</option>
+          <option value="prof3">Claudia</option>
         </select>
       </label>
     </div>
