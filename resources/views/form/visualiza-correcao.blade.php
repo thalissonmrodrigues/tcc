@@ -63,7 +63,6 @@
           <div class="files">
             <a href="#">Arquivo para baixar</a>
             <a href="#">Arquivo para baixar</a>
-            <a href="#">Arquivo para baixar</a>
           </div>
       </div>
     </div>

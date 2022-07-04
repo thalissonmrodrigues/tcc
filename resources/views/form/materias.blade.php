@@ -19,12 +19,12 @@
     <div class="col-md-12 ps-0">
       <label class="form-label">
         Nome da matéria
-        <input required type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
+        <input required id="subjectName" type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
       </label>
     </div>
 
     <div class="col-12 ps-0">
-      <button type="submit" class="btn btn-custom">@if ($variavel_dados_temporaria) Salvar @else Adicionar @endif</button>
+      <button id="btnAddSubject"type="submit" class="btn btn-custom">@if ($variavel_dados_temporaria) Salvar @else Adicionar @endif</button>
       <a href="{{ route('listagem.materias') }}" class="btn">cancelar</a>
     </div>
   </form>

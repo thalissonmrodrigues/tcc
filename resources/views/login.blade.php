@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,19 +16,20 @@
         <i class="bi bi-person"></i>
       </span>
 
-      <form  action="#" method="POST">
+      <form action="{{ route('homePost') }}" method="POST">
+        @csrf
         <label>
           <div class="user-input">
             <i class="bi bi-person-fill"></i>
           </div>
-          <input type="text" placeholder="RGM" name="rgm" required>
+          <input id="inputRGM" type="text" placeholder="RGM" name="rgm" minlength="9" required>
         </label>
 
         <label>
           <div class="block-input">
             <i class="bi bi-lock-fill"></i>
           </div>
-          <input type="password" placeholder="Password" name="password" required>
+          <input required type="password" placeholder="Password" name="password" minlength="6">
         </label>
 
         <input type="submit" value="ENTRAR">

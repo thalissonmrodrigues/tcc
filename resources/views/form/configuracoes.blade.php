@@ -14,14 +14,14 @@
       <div class="col-md-12 ps-0">
         <label class="form-label w-100">
           Nome
-          <input required type="text" class="form-control" value="Alguma Coisa">
+          <input required id="configName" type="text" class="form-control" value="Alguma Coisa">
         </label>
       </div>
 
       <div class="col-md-12 ps-0">
         <label class="form-label w-100">
           Sobrenome
-          <input required type="text" class="form-control" value="Alguma Coisa">
+          <input required id="configSurname" type="text" class="form-control" value="Alguma Coisa">
         </label>
       </div>
     @endif
@@ -36,7 +36,7 @@
      <div class="col-md-12 ps-0">
      <label class="form-label w-100">
         Senha
-        <input required type="password" class="form-control">
+        <input required type="password" class="form-control" minlength="6">
       </label>
     </div>
 
