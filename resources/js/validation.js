@@ -7,16 +7,15 @@ let input_surname_teacher = document.querySelector('#surnameTeacher');
 let input_name_config= document.querySelector('#configName');
 let input_surname_config= document.querySelector('#configSurname');
 
-
 if (input_name_subject) {
     validationText(input_name_subject);
-} 
+}
 
 if (input_name_student) {
     validationText(input_name_student);
-} 
+}
 
-if (input_surname_student) { 
+if (input_surname_student) {
     validationText(input_surname_student);
 }
 
@@ -40,11 +39,11 @@ if (input_surname_config) {
 function validationText(input_text) {
     if (input_text) {
         input_text.addEventListener('keydown', function(e){
-    
+
             let arrayNumber = [0,1,2,3,4,5,6,7,8,9];
-    
+
             arrayNumber.forEach( function(item){
-                if (parseInt(e.key) == item) {  
+                if (parseInt(e.key) == item) {
                     e.preventDefault();
                 }
             })

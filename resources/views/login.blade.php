@@ -24,7 +24,7 @@
           </div>
           <input id="inputRGM" type="text" placeholder="RGM" name="rgm" minlength="9" required>
         </label>
-           
+
         <label>
           <div class="block-input">
             <i class="bi bi-lock-fill"></i>
@@ -48,4 +48,3 @@
   <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
-

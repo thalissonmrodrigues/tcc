@@ -90,8 +90,6 @@
   </div>
 
   <div class="container">
-    <div class="alert d-none" id="aviso"></div>
-
     {{-- Page content --}}
     @yield('content')
 
