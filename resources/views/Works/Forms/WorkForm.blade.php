@@ -1,46 +1,44 @@
-{{-- Layout Settings  --}}
-@extends('layout')
-
-@section('title_page')
-  @if ($variavel_dados_temporaria)
-    Editar Aluno
-  @else
-    Adicionar Aluno
-  @endif
-@endsection
-
-@section('icon_title')
-<i class="fa-solid fa-people-group"></i>
-@endsection
-
 {{-- Page Content --}}
 @section('content')
   <form action="#" method="POST" class="row g-3 my-2 form-add-edit">
     <div class="col-md-6 ps-0">
       <label class="form-label w-100">
         Nome
-        <input required type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
+        <input required id="nomeTrab" type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
       </label>
     </div>
 
-    <div class="col-md-6 ps-0">
+    <div class="col-md-4 ps-0">
       <label class="form-label w-100">
-        Sobrenome
-        <input required type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
+        Data de entrega
+        <input required type="text" class="form-control" id="input-delivery-date" value="@if ($variavel_dados_temporaria) 20/10/2022 @endif">
       </label>
     </div>
 
-    <div class="col-md-6 ps-0">
+    <div class="col-md-2 ps-0">
       <label class="form-label w-100">
-        Email
-        <input required type="email" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
+        Pontos
+        <input required type="text" class="form-control" id="nota" value="@if ($variavel_dados_temporaria) 1.50 @endif">
       </label>
     </div>
 
-     <div class="col-md-6 ps-0">
-     <label class="form-label w-100">
-        Senha
-        <input required type="password" class="form-control">
+    <div class="col-md-12 ps-0">
+      <label class="form-label w-100">
+        Descrição
+        <textarea class="form-control">@if ($variavel_dados_temporaria) Alguma Coisa @endif</textarea>
+      </label>
+    </div>
+
+
+    <div class="col-md-3 ps-0">
+      <label class="form-label">
+        Matéria
+        <select class="form-select">
+          <option selected>Selecione a matéria</option>
+          <option value="id_materia">Dispositivos Moveis</option>
+          <option value="id_materia">Dispositivos Moveis</option>
+          <option value="id_materia">Dispositivos Moveis</option>
+        </select>
       </label>
     </div>
 
@@ -80,18 +78,28 @@
       </label>
     </div>
 
-    <div class="col-12 ps-0">
-      <div class="form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" @if ($variavel_dados_temporaria) checked @endif>
-          Representante da sala
-        </label>
-      </div>
+    <div class="mb-3 col-md-12 ps-0">
+      <input class="form-control" type="file" multiple="multiple">
     </div>
 
     <div class="col-12 ps-0">
       <button type="submit" class="btn btn-custom">@if ($variavel_dados_temporaria) Salvar @else Adicionar @endif</button>
-      <a href="{{ route('listagem.alunos') }}" class="btn">cancelar</a>
+      <a href="{{ route('list.work') }}" class="btn">cancelar</a>
     </div>
   </form>
+@endsection
+
+{{-- Layout Settings  --}}
+@extends('Layout')
+
+@section('title_page')
+  @if ($variavel_dados_temporaria)
+    Editar Trabalho
+  @else
+    Adicionar Trabalho
+  @endif
+@endsection
+
+@section('icon_title')
+  <i class="fa-solid fa-file"></i>
 @endsection

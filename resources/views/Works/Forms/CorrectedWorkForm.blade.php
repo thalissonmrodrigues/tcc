@@ -1,17 +1,3 @@
-{{-- Layout Settings  --}}
-@extends('layout')
-
-@section('title_page')
-  Trabalho - {{ $nome_do_trabalho }}
-@endsection
-@section('icon_title')
-  <i class="fa-solid fa-file"></i>
-@endsection
-@section('cta_route')
-  {{ route('visualiza.trabalho', ['trabalhos' => 1])}}
-@endsection
-@section('cta_btn', 'Voltar')
-
 {{-- Page Content --}}
 @section('content')
   {{-- Card Fixed --}}
@@ -63,9 +49,22 @@
           <div class="files">
             <a href="#">Arquivo para baixar</a>
             <a href="#">Arquivo para baixar</a>
-            <a href="#">Arquivo para baixar</a>
           </div>
       </div>
     </div>
   </div>
 @endsection
+
+{{-- Layout Settings  --}}
+@extends('Layout')
+
+@section('title_page')
+  Trabalho - {{ $nome_do_trabalho }}
+@endsection
+@section('icon_title')
+  <i class="fa-solid fa-file"></i>
+@endsection
+@section('cta_route')
+  {{ route('view.work', ['id_work' => 1])}}
+@endsection
+@section('cta_btn', 'Voltar')

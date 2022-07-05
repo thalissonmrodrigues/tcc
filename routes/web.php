@@ -15,155 +15,161 @@ use Illuminate\Support\Facades\Route;
 
 // Home.
 Route::get('/', function () {
-    return view('home', [
+    return view('Home', [
         'active_menu_header' => 'home'
     ]);
 })->name('home');
 
+Route::post('/', function () {
+    return view('Home', [
+        'active_menu_header' => 'home'
+    ]);
+})->name('homePost');
+
 // Login.
 Route::get('/login', function () {
-    return view('login');
+    return view('Login');
 })->name('login');
 
 // Settings
 Route::get('/{user}/config', function () {
-    return view('form.configuracoes', [
+    return view('ConfigForm', [
         'active_menu_header' => 'configurações',
         'permissão' => TRUE
     ]);
-})->name('configurações');
+})->name('config');
 
 // Works.
 Route::get('/trabalhos', function () {
-    return view('listing.trabalhos', [
+    return view('Works.ListBuilder.WorkListBuilder', [
         'active_menu_header' => 'trabalhos'
     ]);
-})->name('listagem.trabalhos');
+})->name('list.work');
 
 Route::get('/trabalhos/adiciona', function () {
-    return view('form.trabalhos', [
+    return view('Works.Forms.WorkForm', [
         'active_menu_header' => 'trabalhos',
         'variavel_dados_temporaria' => FALSE
     ]);
-})->name('adiciona.trabalhos');
+})->name('add.work');
 
-Route::get('/trabalhos/{trabalhos}/editar', function () {
-    return view('form.trabalhos', [
+Route::get('/trabalhos/{id_work}/editar', function () {
+    return view('Works.Forms.WorkForm', [
         'active_menu_header' => 'trabalhos',
         'variavel_dados_temporaria' => TRUE
     ]);
-})->name('editar.trabalhos');
+})->name('edit.work');
 
-Route::get('/trabalhos/{trabalhos}', function () {
-    return view('form.visualiza-trabalho', [
+Route::get('/trabalhos/{id_work}', function () {
+    return view('Works.Forms.ViewWorkForm', [
         'active_menu_header' => 'trabalhos'
     ]);
-})->name('visualiza.trabalho');
+})->name('view.work');
 
-Route::get('/trabalhos/{trabalhos}/trabalho/{trabalho}/correcao', function () {
-    return view('form.correcao-trabalho', [
+Route::get('/trabalhos/{id_work}/trabalho/{id_send_work}/correcao', function () {
+    return view('Works.Forms.WorkCorrectionForm', [
         'active_menu_header' => 'trabalhos',
         'nome_do_trabalho' => 'Trabalho de Conclusão de Curso'
     ]);
-})->name('correcao.trabalho');
+})->name('correction.work');
 
-Route::get('/trabalhos/{trabalhos}/tabalho/{trabalho}/visualiza', function () {
-    return view('form.visualiza-correcao', [
+Route::get('/trabalhos/{id_work}/tabalho/{id_send_work}/visualiza', function () {
+    return view('Works.Forms.CorrectedWorkForm', [
         'active_menu_header' => 'trabalhos',
         'nome_do_trabalho' => 'Trabalho de Conclusão de Curso'
     ]);
-})->name('visualiza.correcao');
+})->name('view.correction');
 
 // Subjects.
 Route::get('/materias', function () {
-    return view('listing.materias', [
+    return view('Subjects.ListBuilder.SubjectListBuilder', [
         'active_menu_header' => 'materias'
     ]);
-})->name('listagem.materias');
+})->name('list.subject');
 
 Route::get('/materias/adiciona', function () {
-    return view('form.materias', [
+    return view('Subjects.Forms.SubjectForm', [
         'active_menu_header' => 'materias',
         'variavel_dados_temporaria' => FALSE
     ]);
-})->name('adiciona.materias');
+})->name('add.subject');
 
-Route::get('/materias/{materia}/editar', function () {
-    return view('form.materias', [
+Route::get('/materias/{id_subject}/editar', function () {
+    return view('Subjects.Forms.SubjectForm', [
         'active_menu_header' => 'materias',
         'variavel_dados_temporaria' => TRUE
     ]);
-})->name('editar.materias');
+})->name('edit.subject');
 
 // Teachers.
 Route::get('/professores', function () {
-    return view('listing.professores', [
+    return view('Teachers.ListBuilder.TeacherListBuilder', [
         'active_menu_header' => 'professores'
     ]);
-})->name('listagem.professores');
+})->name('list.teacher');
 
 Route::get('/professores/adiciona', function () {
-    return view('form.professores', [
+    return view('Teachers.Forms.TeacherForm', [
         'active_menu_header' => 'professores',
         'variavel_dados_temporaria' => FALSE
     ]);
-})->name('adiciona.professores');
+})->name('add.teacher');
 
-Route::get('/professores/{professor}/editar', function () {
-    return view('form.professores', [
+Route::get('/professores/{id_teacher}/editar', function () {
+    return view('Teachers.Forms.TeacherForm', [
         'active_menu_header' => 'professores',
         'variavel_dados_temporaria' => TRUE
     ]);
-})->name('editar.professores');
+})->name('edit.teacher');
 
 // Students.
 Route::get('/alunos', function () {
-    return view('listing.alunos', [
+    return view('Students.ListBuilder.StudentListBuilder', [
         'active_menu_header' => 'alunos'
     ]);
-})->name('listagem.alunos');
+})->name('list.student');
 
 Route::get('/alunos/adiciona', function () {
-    return view('form.alunos', [
+    return view('Students.Forms.StudentForm', [
         'active_menu_header' => 'alunos',
         'variavel_dados_temporaria' => FALSE
     ]);
-})->name('adiciona.alunos');
+})->name('add.student');
 
-Route::get('/alunos/{aluno}/editar', function () {
-    return view('form.alunos', [
+Route::get('/alunos/{id_student}/editar', function () {
+    return view('Students.Forms.StudentForm', [
         'active_menu_header' => 'alunos',
         'variavel_dados_temporaria' => TRUE
     ]);
-})->name('editar.alunos');
+})->name('edit.student');
 
 // Rooms.
 Route::get('/salas', function () {
-    return view('listing.salas', [
+    return view('Classrooms.ListBuilder.ClassroomListBuilder', [
         'active_menu_header' => 'salas'
     ]);
-})->name('listagem.salas');
+})->name('list.classroom');
 
-Route::get('/salas/{sala}/informacoes', function () {
-    return view('listing.sala-informacoes', [
+Route::get('/salas/{id_classroom}/informacoes', function () {
+    return view('Classrooms.ListBuilder.ClassroomInfoListBuilder', [
         'active_menu_header' => 'salas',
         'serie' => '8',
         'sigla' => 'A',
         'periodo' => 'Tarde'
     ]);
-})->name('listagem.sala.informacoes');
+})->name('list.info.classroom');
 
 Route::get('/salas/adiciona', function () {
-    return view('form.salas', [
+    return view('Classrooms.Forms.ClassroomForm', [
         'active_menu_header' => 'salas',
         'variavel_dados_temporaria' => FALSE
     ]);
-})->name('adiciona.salas');
+})->name('add.classroom');
 
-Route::get('/salas/{sala}/editar', function () {
-    return view('form.salas', [
+Route::get('/salas/{id_classroom}/editar', function () {
+    return view('Classrooms.Forms.ClassroomForm', [
         'active_menu_header' => 'salas',
         'variavel_dados_temporaria' => TRUE
     ]);
-})->name('editar.salas');
+})->name('edit.classroom');
 

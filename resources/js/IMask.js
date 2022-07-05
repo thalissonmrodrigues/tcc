@@ -17,3 +17,12 @@ if(document.getElementById('nota')) {
     }
   );
 }
+
+if (document.getElementById('inputRGM')){
+  IMask(
+    document.getElementById('inputRGM'),
+    {
+      mask: '0000000-0',
+    }
+  );
+}
