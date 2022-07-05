@@ -18,8 +18,6 @@ class CreateClassroomsTable extends Migration
             $table->integer('serie');
             $table->char('letter');
             $table->string('period');
-            $table->foreignId('teacher_id')->constrained('teachers');
-            $table->foreignId('student_id')->constrained('students');
             $table->timestamps();
         });
     }
