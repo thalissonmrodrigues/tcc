@@ -18,6 +18,7 @@ class CreateTeacherRoomSubjectsTable extends Migration
             $table->foreignId('teacher_id')->constrained('teachers');
             $table->foreignId('classroom_id')->constrained('classrooms');
             $table->foreignId('subject_id')->constrained('subjects');
+            $table->boolean('representative_teacher');
             $table->timestamps();
         });
     }
