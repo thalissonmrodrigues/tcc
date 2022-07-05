@@ -1,12 +1,3 @@
-{{-- Layout Settings  --}}
-@extends('layout')
-
-@section('title_page', 'Configurações')
-
-@section('icon_title')
-  <i class="fa-solid fa-gear"></i>
-@endsection
-
 {{-- Page Content --}}
 @section('content')
   <form action="#" method="POST" class="row g-3 my-2 form-add-edit config">
@@ -52,4 +43,13 @@
       <a href="{{ route('home') }}" class="btn">cancelar</a>
     </div>
   </form>
+@endsection
+
+{{-- Layout Settings  --}}
+@extends('Layout')
+
+@section('title_page', 'Configurações')
+
+@section('icon_title')
+  <i class="fa-solid fa-gear"></i>
 @endsection

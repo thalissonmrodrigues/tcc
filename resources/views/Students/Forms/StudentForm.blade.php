@@ -1,18 +1,3 @@
-{{-- Layout Settings  --}}
-@extends('layout')
-
-@section('title_page')
-  @if ($variavel_dados_temporaria)
-    Editar Aluno
-  @else
-    Adicionar Aluno
-  @endif
-@endsection
-
-@section('icon_title')
-<i class="fa-solid fa-people-group"></i>
-@endsection
-
 {{-- Page Content --}}
 @section('content')
   <form action="#" method="POST" class="row g-3 my-2 form-add-edit">
@@ -72,7 +57,22 @@
 
     <div class="col-12 ps-0">
       <button type="submit" class="btn btn-custom">@if ($variavel_dados_temporaria) Salvar @else Adicionar @endif</button>
-      <a href="{{ route('listagem.alunos') }}" class="btn">cancelar</a>
+      <a href="{{ route('list.student') }}" class="btn">cancelar</a>
     </div>
   </form>
+@endsection
+
+{{-- Layout Settings  --}}
+@extends('Layout')
+
+@section('title_page')
+  @if ($variavel_dados_temporaria)
+    Editar Aluno
+  @else
+    Adicionar Aluno
+  @endif
+@endsection
+
+@section('icon_title')
+<i class="fa-solid fa-people-group"></i>
 @endsection
