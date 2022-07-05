@@ -1,17 +1,3 @@
-{{-- Layout Settings  --}}
-@extends('layout')
-
-@section('title_page')
-  Correção - {{ $nome_do_trabalho }}
-@endsection
-@section('icon_title')
-  <i class="fa-solid fa-file"></i>
-@endsection
-@section('cta_route')
-  {{ route('visualiza.trabalho', ['trabalhos' => 1])}}
-@endsection
-@section('cta_btn', 'Voltar')
-
 {{-- Page Content --}}
 @section('content')
   <div class="work-info-area d-flex justify-content-between row my-3">
@@ -79,3 +65,17 @@
     </div>
   </div>
 @endsection
+
+{{-- Layout Settings  --}}
+@extends('Layout')
+
+@section('title_page')
+  Correção - {{ $nome_do_trabalho }}
+@endsection
+@section('icon_title')
+  <i class="fa-solid fa-file"></i>
+@endsection
+@section('cta_route')
+  {{ route('view.work', ['id_work' => 1])}}
+@endsection
+@section('cta_btn', 'Voltar')

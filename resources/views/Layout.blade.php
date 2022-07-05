@@ -26,13 +26,13 @@
           <div class="collapse navbar-collapse" id="menu-header">
             <div class="navbar-nav">
               <a class="nav-link @if ($active_menu_header == 'home') active @endif" href="{{ route('home') }}">Início</a>
-              <a class="nav-link @if ($active_menu_header == 'trabalhos') active @endif" href="{{ route('listagem.trabalhos') }}">Trabalhos</a>
-              <a class="nav-link @if ($active_menu_header == 'materias') active @endif" href="{{ route('listagem.materias') }}">Materias</a>
-              <a class="nav-link @if ($active_menu_header == 'professores') active @endif" href="{{ route('listagem.professores') }}">Professores</a>
-              <a class="nav-link @if ($active_menu_header == 'alunos') active @endif" href="{{ route('listagem.alunos') }}">Alunos</a>
-              <a class="nav-link @if ($active_menu_header == 'salas') active @endif" href="{{ route('listagem.salas') }}">Salas</a>
+              <a class="nav-link @if ($active_menu_header == 'trabalhos') active @endif" href="{{ route('list.work') }}">Trabalhos</a>
+              <a class="nav-link @if ($active_menu_header == 'materias') active @endif" href="{{ route('list.subject') }}">Materias</a>
+              <a class="nav-link @if ($active_menu_header == 'professores') active @endif" href="{{ route('list.teacher') }}">Professores</a>
+              <a class="nav-link @if ($active_menu_header == 'alunos') active @endif" href="{{ route('list.student') }}">Alunos</a>
+              <a class="nav-link @if ($active_menu_header == 'salas') active @endif" href="{{ route('list.classroom') }}">Salas</a>
               <a class="nav-link disabled" disabled href="#">Notas</a>
-              <a class="nav-link config @if ($active_menu_header == 'configurações') active @endif" href="{{ route('configurações', ['user' => 1]) }}">Configurações</a>
+              <a class="nav-link config @if ($active_menu_header == 'configurações') active @endif" href="{{ route('config', ['user' => 1]) }}">Configurações</a>
               <a class="nav-link logout" href="#">Sair</a>
             </div>
           </div>
@@ -53,7 +53,7 @@
 
           {{-- Avatar menu --}}
           <div class="menu-avatar d-none">
-            <a href="{{ route('configurações', ['user' => 1]) }}">Configurações</a>
+            <a href="{{ route('config', ['user' => 1]) }}">Configurações</a>
             <a class="logout" href="#">Sair</a>
           </div>
         </div>
@@ -109,14 +109,14 @@
           <div class="col">
             <ul class="nav flex-column">
               <li class="nav-item"><a href="{{ route('home') }}" class="nav-link px-2">Início</a></li>
-              <li class="nav-item"><a href="{{ route('listagem.trabalhos') }}" class="nav-link px-2">Trabalhos</a></li>
+              <li class="nav-item"><a href="{{ route('list.work') }}" class="nav-link px-2">Trabalhos</a></li>
             </ul>
           </div>
 
           <div class="col">
             <ul class="nav flex-column">
               <li class="nav-item"><a href="#" class="nav-link px-2 disabled">Notas</a></li>
-              <li class="nav-item"><a href="{{ route('listagem.materias') }}" class="nav-link px-2">Materias</a></li>
+              <li class="nav-item"><a href="{{ route('list.subject') }}" class="nav-link px-2">Materias</a></li>
             </ul>
           </div>
         </div>
@@ -124,15 +124,15 @@
         <div  class="col row">
           <div class="col">
             <ul class="nav flex-column">
-              <li class="nav-item"><a href="{{ route('listagem.salas') }}" class="nav-link px-2">Salas</a></li>
-              <li class="nav-item"><a href="{{ route('listagem.alunos') }}" class="nav-link px-2">Alunos</a></li>
+              <li class="nav-item"><a href="{{ route('list.classroom') }}" class="nav-link px-2">Salas</a></li>
+              <li class="nav-item"><a href="{{ route('list.student') }}" class="nav-link px-2">Alunos</a></li>
             </ul>
           </div>
 
           <div class="col">
             <ul class="nav flex-column">
-              <li class="nav-item"><a href="{{ route('listagem.professores') }}" class="nav-link px-2">Professores</a></li>
-              <li class="nav-item"><a href="{{ route('configurações', ['user' => 1]) }}" class="nav-link px-2">Configurações</a></li>
+              <li class="nav-item"><a href="{{ route('list.teacher') }}" class="nav-link px-2">Professores</a></li>
+              <li class="nav-item"><a href="{{ route('config', ['user' => 1]) }}" class="nav-link px-2">Configurações</a></li>
             </ul>
           </div>
         </div>

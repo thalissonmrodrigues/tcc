@@ -1,19 +1,3 @@
-{{-- Layout Settings  --}}
-@extends('layout')
-
-@section('title_page')
-  {{ $serie . 'º ' . $sigla . ' - ' . $periodo }}
-@endsection
-@section('icon_title')
-  <i class="fa-solid fa-school"></i>
-@endsection
-
-{{-- apenas adm e prof --}}
-@section('cta_route')
-  {{ route('listagem.salas')}}
-@endsection
-@section('cta_btn', 'Voltar')
-
 {{-- Page Content --}}
 @section('content')
   {{-- Room menu tabs --}}
@@ -130,3 +114,18 @@
   </div>
 @endsection
 
+{{-- Layout Settings  --}}
+@extends('Layout')
+
+@section('title_page')
+  {{ $serie . 'º ' . $sigla . ' - ' . $periodo }}
+@endsection
+@section('icon_title')
+  <i class="fa-solid fa-school"></i>
+@endsection
+
+{{-- apenas adm e prof --}}
+@section('cta_route')
+  {{ route('list.classroom')}}
+@endsection
+@section('cta_btn', 'Voltar')
