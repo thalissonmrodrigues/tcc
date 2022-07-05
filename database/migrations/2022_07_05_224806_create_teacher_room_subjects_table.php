@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoomsTable extends Migration
+class CreateTeacherRoomSubjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('teacher_room_subjects', function (Blueprint $table) {
             $table->id();
-            $table->integer('serie');
-            $table->char('letter');
-            $table->string('period');
             $table->foreignId('teacher_id')->constrained('teachers');
-            $table->integer('student_id');
-            $table->date('created_at');
+            $table->foreignId('classroom_id')->constrained('classrooms');
+            $table->foreignId('subject_id')->constrained('subjects');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +29,6 @@ class CreateRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('teacher_room_subjects');
     }
 }

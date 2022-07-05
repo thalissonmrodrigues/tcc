@@ -19,9 +19,7 @@ class CreateWorkSentsTable extends Migration
             $table->foreignId('student_id')->constrained('students');
             $table->text('student_comment');
             $table->string('files');
-            $table->string('status');
-            $table->integer('corrected_work_id')->nullable();
-            $table->date('created_at');
+            $table->timestamps();
         });
     }
 

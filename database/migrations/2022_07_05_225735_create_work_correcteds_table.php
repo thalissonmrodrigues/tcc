@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCorrectedWorksTable extends Migration
+class CreateWorkCorrectedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCorrectedWorksTable extends Migration
      */
     public function up()
     {
-        Schema::create('corrected_works', function (Blueprint $table) {
+        Schema::create('work_correcteds', function (Blueprint $table) {
             $table->id();
             $table->foreignId('work_sent_id')->constrained('work_sents');
             $table->float('score');
             $table->string('corrected_files');
             $table->text('teacher_comment');
-            $table->date('created_at');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateCorrectedWorksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('corrected_works');
+        Schema::dropIfExists('work_correcteds');
     }
 }

@@ -19,8 +19,10 @@ class CreateWorksTable extends Migration
             $table->text('description');
             $table->float('score');
             $table->date('date_max');
-            $table->foreignId('room_id')->constrained('rooms');
-            $table->date('created_at');
+            $table->foreignId('teacher_id')->constrained('teachers');
+            $table->foreignId('subject_id')->constrained('subjects');
+            $table->foreignId('classroom_id')->constrained('classrooms');
+            $table->timestamps();
         });
     }
 
