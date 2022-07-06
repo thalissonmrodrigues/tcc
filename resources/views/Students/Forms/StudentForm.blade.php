@@ -1,37 +1,30 @@
 {{-- Page Content --}}
 @section('content')
-  <form action="#" method="POST" class="row g-3 my-2 form-add-edit">
-    <div class="col-md-6 ps-0">
+  <form action="#" method="POST" class="g-3 my-2 form-add-edit">
+    <div class="ps-0">
       <label class="form-label w-100">
         Nome
         <input required id="studentName" type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
       </label>
     </div>
 
-    <div class="col-md-6 ps-0">
-      <label class="form-label w-100">
-        Sobrenome
-        <input required id="studentSurname" type="text" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
-      </label>
-    </div>
-
-    <div class="col-md-6 ps-0">
+    <div class="ps-0">
       <label class="form-label w-100">
         Email
         <input required type="email" class="form-control" value="@if ($variavel_dados_temporaria) Alguma Coisa @endif">
       </label>
     </div>
 
-     <div class="col-md-6 ps-0">
+     <div class="ps-0">
      <label class="form-label w-100">
         Senha
         <input required type="password" class="form-control">
       </label>
     </div>
 
-    <div class="col-md-3 ps-0">
+    <div class="ps-0">
       <label class="form-label">
-        Série
+        Sala
         <select class="form-select">
           <option selected>Selecione a sala</option>
           <option value="6">6ºA- Manhã</option>
@@ -46,7 +39,7 @@
       </label>
     </div>
 
-    <div class="col-12 ps-0">
+    <div class="py-3">
       <div class="form-check">
         <label class="form-check-label">
           <input class="form-check-input" type="checkbox" @if ($variavel_dados_temporaria) checked @endif>
