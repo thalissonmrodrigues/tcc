@@ -90,6 +90,15 @@
   </div>
 
   <div class="container">
+
+    @foreach (['success', 'danger'] as $alert)
+        @if (session($alert))
+            <div class="alert alert-{{ $alert }}">
+                {{ session($alert) }}
+            </div>
+        @endif
+    @endforeach
+
     {{-- Page content --}}
     @yield('content')
 
