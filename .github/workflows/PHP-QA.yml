@@ -31,4 +31,4 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run PHP CodeStyle (phpcs)
-        run: vendor/bin/phpcs --standard=PSR1,PSR12,phpcs-laravel app/
+        run: vendor/bin/phpcs --standard=PSR1,PSR12 app/

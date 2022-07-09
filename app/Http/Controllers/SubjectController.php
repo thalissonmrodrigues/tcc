@@ -20,12 +20,11 @@ class SubjectController extends Controller
     public function index()
     {
         $active_menu_header = 'materias';
-
         $subjects = Subject::all();
 
         return view('Subjects.ListBuilder.SubjectListBuilder', compact(
-           'active_menu_header',
-           'subjects',
+            'active_menu_header',
+            'subjects',
         ));
     }
 
@@ -39,13 +38,13 @@ class SubjectController extends Controller
         $active_menu_header = 'materias';
         $action = 'Adicionar Materia';
         $name_subject = '';
-        $route_form = TRUE;
+        $route_form = true;
 
         return view('Subjects.Forms.SubjectForm', compact(
-           'active_menu_header',
-           'action',
-           'name_subject',
-           'route_form',
+            'active_menu_header',
+            'action',
+            'name_subject',
+            'route_form',
         ));
     }
 
@@ -58,16 +57,14 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         if (!$request->name) {
-            return redirect()->back()->with('danger','Não foi possivel criar a matéria!');
+            return redirect()->back()->with('danger', 'Não foi possivel criar a matéria!');
         }
 
         $subject = new Subject();
-
         $subject->name = $request->name;
-
         $subject->save();
 
-        return redirect(route('list.subject'))->with('success','Matéria criada com sucesso!');
+        return redirect(route('list.subject'))->with('success', 'Matéria criada com sucesso!');
     }
 
     /**
@@ -80,10 +77,8 @@ class SubjectController extends Controller
     {
         $active_menu_header = 'materias';
         $action = "Editar Matéria";
-        $route_form = FALSE;
-
+        $route_form = false;
         $entity = Subject::where('id', $id)->first();
-
         $name_subject = $entity->name;
 
 
@@ -106,16 +101,14 @@ class SubjectController extends Controller
     public function update(Request $request, $id)
     {
         if (!$id || !$request->name) {
-            return redirect()->back()->with('danger','Não foi possivel editar a matéria!');
+            return redirect()->back()->with('danger', 'Não foi possivel editar a matéria!');
         }
 
         $entity = Subject::where('id', $id)->first();
-
         $entity->name = $request->name;
-
         $entity->save();
 
-        return redirect(route('list.subject'))->with('success','Matéria editada com sucesso!');
+        return redirect(route('list.subject'))->with('success', 'Matéria editada com sucesso!');
     }
 
     /**
@@ -127,6 +120,6 @@ class SubjectController extends Controller
     public function destroy($id)
     {
         Subject::destroy($id);
-        return redirect(route('list.subject'))->with('success','Matéria excluida com sucesso!');;
+        return redirect(route('list.subject'))->with('success', 'Matéria excluida com sucesso!');
     }
 }
