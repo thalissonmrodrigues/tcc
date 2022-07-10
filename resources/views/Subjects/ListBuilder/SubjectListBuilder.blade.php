@@ -9,6 +9,7 @@
       <table class="table mt-3">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Nome da Materia</th>
             {{-- <th>Professor</th>
             <th>Email do Professor</th>
@@ -21,6 +22,7 @@
         <tbody>
             @foreach ($subjects as $subject)
                 <tr>
+                    <td>{{ $subject->id }}</td>
                     <td>{{ $subject->name }}</td>
                     {{-- <td>Eduardo Nascimento Rodrigues</td>
                     <td>eduardonascimento@test.com</td>

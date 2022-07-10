@@ -83,6 +83,7 @@ Route::get('/trabalhos/{id_work}/tabalho/{id_send_work}/visualiza', function () 
 
 // Subjects.
 Route::get('/materias', [SubjectController::class, 'index'])->name('list.subject');
+Route::get('/materias/filtros', [SubjectController::class, 'show'])->name('show.list.subject');
 Route::get('/materias/adiciona', [SubjectController::class, 'create'])->name('add.subject');
 Route::get('/materias/{id_subject}/editar', [SubjectController::class, 'edit'])->name('edit.subject');
 Route::post('/materias/adiciona', [SubjectController::class, 'store'])->name('store.subject');

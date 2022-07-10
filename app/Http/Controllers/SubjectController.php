@@ -68,6 +68,33 @@ class SubjectController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request)
+    {
+        if ($request->name) {
+            $subject = Subject::where('name', $request->name)->first();
+
+            if($subject) {
+                $active_menu_header = 'materias';
+                $subjects = [$subject];
+
+                return view('Subjects.ListBuilder.SubjectListBuilder', compact(
+                    'active_menu_header',
+                    'subjects',
+                ));
+            }
+        }
+
+        $alert = $request->name ? 'Não foi possivel localizar a matéria: ' . $request->name : 'Nome da matéria está vazio';
+
+        return redirect()->back()->with('danger', $alert);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

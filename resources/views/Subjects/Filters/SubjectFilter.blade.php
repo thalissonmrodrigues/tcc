@@ -1,50 +1,10 @@
 <div class="filter-area d-none col-md-4">
-    <form action="#" method="post" class="filters">
+    <form action="{{ route('show.list.subject', ['name' => $subjects[0]->name]) }}" method="GET" class="filters">
         <h3>Filtros</h3>
 
         <label>
-          Professor <br>
-          <input type="text" placeholder="Digite o nome do professor" class="form-control" name="professor">
-        </label>
-
-        <label>
-          Materia <br>
-          <select class="form-select" name="materia">
-            <option selected>Selecione a materia</option>
-            <option value="matematica">Matematica</option>
-            <option value="portugues">Portugues</option>
-            <option value="ciencias">Ciencias</option>
-          </select>
-        </label>
-
-        <label>
-          Período <br>
-          <select class="form-select" name="materia">
-            <option selected>Selecione o período</option>
-            <option value="manhã">Manhã</option>
-            <option value="tarde">Tarde</option>
-            <option value="noite">Noite</option>
-          </select>
-        </label>
-
-        <label>
-          Série <br>
-          <select class="form-select" name="materia">
-            <option selected>Selecione a série</option>
-            <option value="8">8º</option>
-            <option value="7">7º</option>
-            <option value="6">6º</option>
-          </select>
-        </label>
-
-        <label>
-          Sigla <br>
-          <select class="form-select" name="materia">
-            <option selected>Selecione a sigla</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-          </select>
+            Nome da Materia <br>
+            <input type="text" placeholder="Digite o nome da materia" class="form-control" name="name">
         </label>
 
         <br>
