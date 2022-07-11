@@ -64,4 +64,4 @@ jobs:
           DB_DATABASE: test_db
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
           DB_USERNAME: admin
-          DB_PASSWORD: admin
+          DB_PASSWORD: "admin"
