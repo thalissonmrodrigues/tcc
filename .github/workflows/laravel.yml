@@ -9,7 +9,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: no
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_DATABASE: test_db
         ports:
           - 3306
@@ -64,4 +64,5 @@ jobs:
           DB_USERNAME: admin
           DB_PASSWORD: admin
         run:
+          php artisan migrate
           php artisan test
