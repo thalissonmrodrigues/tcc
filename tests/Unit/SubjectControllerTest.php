@@ -9,12 +9,15 @@ class SubjectControllerTest extends TestCase
 {
 
     /**
-     * This method is called before each test.
+     * Test store().
      */
-    protected function setUp(): void
+    public function testStore()
     {
-        parent::setUp();
-        $this->objTest = Subject::latest()->first();
+        $objTest = new Subject();
+        $objTest->name = 'Nome da Materia de Test' . rand(1000000, 9999999);
+        $response = $this->post('/materias/adiciona', $objTest->toArray());
+        $response->assertStatus(302);
+        $response->assertRedirect(route('list.subject'));
     }
 
     /**
@@ -46,24 +49,13 @@ class SubjectControllerTest extends TestCase
     }
 
     /**
-     * Test store().
-     */
-    public function testStore()
-    {
-        $this->objTest = new Subject();
-        $this->objTest->name = 'Nome da Materia de Test' . rand(1000000, 9999999);
-        $response = $this->post('/materias/adiciona', $this->objTest->toArray());
-        $response->assertStatus(302);
-        $response->assertRedirect(route('list.subject'));
-    }
-
-    /**
      * Test edit().
      */
     public function testEdit()
     {
         $this->withoutMiddleware();
-        $response = $this->get('/materias/'.$this->objTest->id.'/editar');
+        $objTest = Subject::latest()->first();
+        $response = $this->get('/materias/'.$objTest->id.'/editar');
         $response->assertSuccessful();
         $response->assertViewIs('Subjects.Forms.SubjectForm');
         $response->assertViewHas('active_menu_header');
@@ -77,12 +69,13 @@ class SubjectControllerTest extends TestCase
      */
     public function testUpdate()
     {
-        $this->objTest->name = 'Nome da Materia de Test' . rand(1000000, 9999999);
-        $response = $this->post('/materias/'.$this->objTest->id.'/editar', $this->objTest->toArray());
+        $objTest = Subject::latest()->first();
+        $objTest->name = 'Nome da Materia de Test' . rand(1000000, 9999999);
+        $response = $this->post('/materias/'.$objTest->id.'/editar', $objTest->toArray());
         $response->assertStatus(302);
         $response->assertRedirect(route('list.subject'));
-        $newObj =  Subject::where('id', $this->objTest->id)->first();
-        $this->assertEquals($this->objTest->name, $newObj->name);
+        $newObj =  Subject::where('id', $objTest->id)->first();
+        $this->assertEquals($objTest->name, $newObj->name);
     }
 
     /**
@@ -90,10 +83,11 @@ class SubjectControllerTest extends TestCase
      */
     public function testDestroy()
     {
-        $response = $this->delete('/materias/'.$this->objTest->id.'/delete', $this->objTest->toArray());
+        $objTest = Subject::latest()->first();
+        $response = $this->delete('/materias/'.$objTest->id.'/delete', $objTest->toArray());
         $response->assertStatus(302);
         $response->assertRedirect(route('list.subject'));
-        $output =  Subject::where('id', $this->objTest->id)->first();
+        $output =  Subject::where('id', $objTest->id)->first();
         $this->assertEquals(NULL, $output);
     }
 }
