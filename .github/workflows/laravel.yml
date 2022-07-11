@@ -1,46 +1,67 @@
-name: Laravel
+name: Continuos Integration for Laravel Dusk
 on: [push]
-
 jobs:
-  laravel-tests:
+
+  dusk-php:
     runs-on: ubuntu-latest
-    env:
-      DB_DATABASE: test_db
-      DB_USER: root
-      DB_HOST: 127.0.0.1
-      DB_CONNECTION: mysql
+
     services:
       mysql:
-        image: mysql:5.7
+        image: mariadb:10.2
         env:
-        DB_PASSWORD: admin
-        MYSQL_DATABASE: test_db
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: dusk
         ports:
-        - 3306/tcp
+          - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-      steps:
-        - name: Checkout
-        uses: actions/checkout@v1
-        - name: Setup PHP
+
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Prepare The Environment
+        run: cp .env.ci .env
+
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-        php-version: '7.4'
-        - name: PHP version
-        run: php -v
-        - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-        - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --prefer-dist
-        - name: Generate key
-        run: php artisan key:generate
-        - name: Verify MySQL connection
-        run: mysql --version
-        sudo apt-get install -y mysql-client mysql --host=127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -e "SHOW DATABASES"
-        - name: Run Migration
-        run: php artisan migrate -v
+          php-version: '7.2'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install Composer Dependencies
+        run: |
+          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+          chmod -R 777 storage bootstrap/cache
+          npm install
+          npm run production
+      - name: Generate Application Key
+        run: |
+          php artisan key:generate
+          php artisan passport:keys
+      - name: Upgrade Chrome Driver
+        run: php artisan dusk:chrome-driver
+
+      - name: Start Chrome Driver
+        run: ./vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &
+
+      - name: Run Laravel Server
+        run: php artisan serve > /dev/null 2>&1 &
+
+      - name: Run Dusk Tests
+        run: |
+          chmod -R 0755 vendor/laravel/dusk/bin/
+          php artisan dusk
         env:
-          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
-          - name: Execute tests (Unit and Feature tests) via PHPUnit
-          env:
-          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
-          run: vendor/bin/phpunit
+          APP_ENV: local
+          APP_URL: "http://127.0.0.1:8000"
+          DB_CONNECTION: mysql
+          DB_DATABASE: dusk
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          DB_USER: root
