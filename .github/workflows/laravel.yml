@@ -9,7 +9,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: admin
+          MYSQL_ROOT_PASSWORD: "admin"
           MYSQL_DATABASE: test_db
         ports:
           - 3306
@@ -22,8 +22,11 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Prepare The Environment
-        run: cp .env.testing .env
+      # - name: Prepare The Environment
+      #   run: cp .env.testing .env
+
+      - name: Copy .env
+        run: php -r "file_exists('.env.testing') || copy('.env.example', '.env.testing');"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -61,8 +64,8 @@ jobs:
           DB_CONNECTION: mysql
           DB_DATABASE: test_db
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-          DB_USERNAME: admin
-          DB_PASSWORD: admin
+          DB_USERNAME: "admin"
+          DB_PASSWORD: "admin"
         run: php artisan migrate -v
       - name: Run Dusk Tests
         run:
