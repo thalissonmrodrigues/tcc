@@ -1,16 +1,16 @@
-name: Continuos Integration for Laravel Dusk
+name: Continuos Integration for Laravel phpunit
 on: [push]
 jobs:
 
-  dusk-php:
+  phpunit:
     runs-on: ubuntu-latest
 
     services:
       mysql:
-        image: mariadb:10.2
+        image: mysql:5.7
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: dusk
+          MYSQL_DATABASE: test_db
         ports:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -23,12 +23,12 @@ jobs:
           fetch-depth: 1
 
       - name: Prepare The Environment
-        run: cp .env.ci .env
+        run: cp .env.testing .env
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.2'
+          php-version: '7.4'
 
       - name: Setup Node.js
         uses: actions/setup-node@v1
@@ -42,26 +42,26 @@ jobs:
           npm install
           npm run production
       - name: Generate Application Key
+        #php artisan passport:keys
         run: |
           php artisan key:generate
-          php artisan passport:keys
-      - name: Upgrade Chrome Driver
-        run: php artisan dusk:chrome-driver
+      # - name: Upgrade Chrome Driver
+      #   run: php artisan dusk:chrome-driver
 
-      - name: Start Chrome Driver
-        run: ./vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &
+      # - name: Start Chrome Driver
+      #   run: ./vendor/laravel/dusk/bin/chromedriver-linux > /dev/null 2>&1 &
 
-      - name: Run Laravel Server
-        run: php artisan serve > /dev/null 2>&1 &
+      # - name: Run Laravel Server
+      #   run: php artisan serve > /dev/null 2>&1 &
 
       - name: Run Dusk Tests
-        run: |
-          chmod -R 0755 vendor/laravel/dusk/bin/
-          php artisan dusk
+        run:
+          php artisan test
         env:
           APP_ENV: local
           APP_URL: "http://127.0.0.1:8000"
           DB_CONNECTION: mysql
-          DB_DATABASE: dusk
+          DB_DATABASE: test_db
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-          DB_USER: root
+          DB_USERNAME: admin
+          DB_PASSWORD: admin
