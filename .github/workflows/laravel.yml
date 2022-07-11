@@ -22,4 +22,10 @@ jobs:
       - name: Run migrate
         run: php artisan migrate -v
       - name: Run PHPunit
+        env:
+          DB_CONNECTION: mysql
+          DB_PORT: 3306
+          DB_USER: admin
+          DB_PASSWORD: "admin"
+          DB_DATABASE: test_db
         run: vendor/bin/phpunit
