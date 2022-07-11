@@ -78,7 +78,7 @@ class SubjectController extends Controller
         if ($request->name) {
             $subject = Subject::where('name', $request->name)->first();
 
-            if($subject) {
+            if ($subject) {
                 $active_menu_header = 'materias';
                 $subjects = [$subject];
 
@@ -89,7 +89,9 @@ class SubjectController extends Controller
             }
         }
 
-        $alert = $request->name ? 'Não foi possivel localizar a matéria: ' . $request->name : 'Nome da matéria está vazio';
+        $alert = $request->name ?
+            'Não foi possivel localizar a matéria: ' . $request->name :
+            'Nome da matéria está vazio';
 
         return redirect()->back()->with('danger', $alert);
     }
