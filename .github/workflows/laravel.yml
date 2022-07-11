@@ -54,15 +54,16 @@ jobs:
       # - name: Run Laravel Server
       #   run: php artisan serve > /dev/null 2>&1 &
 
-      - name: Run Dusk Tests
+      - name: Run Migration
         env:
           APP_ENV: local
           APP_URL: "http://127.0.0.1:8000"
           DB_CONNECTION: mysql
           DB_DATABASE: test_db
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-          DB_USERNAME: admin
-          DB_PASSWORD: admin
+          DB_USER: admin
+        run: php artisan migrate -v
+      - name: Run Dusk Tests
         run:
           php artisan migrate
           php artisan test
