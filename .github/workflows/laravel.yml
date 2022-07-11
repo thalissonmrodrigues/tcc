@@ -9,7 +9,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_ROOT_PASSWORD: admin
           MYSQL_DATABASE: test_db
         ports:
           - 3306
@@ -61,7 +61,8 @@ jobs:
           DB_CONNECTION: mysql
           DB_DATABASE: test_db
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-          DB_USER: admin
+          DB_USERNAME: admin
+          DB_PASSWORD: admin
         run: php artisan migrate -v
       - name: Run Dusk Tests
         run:
