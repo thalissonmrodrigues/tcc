@@ -49,6 +49,21 @@ class SubjectControllerTest extends TestCase
     }
 
     /**
+     * Test show().
+     */
+    public function testShow()
+    {
+        $this->withoutMiddleware();
+        $objTest = Subject::latest()->first();
+        $name = implode('+', explode(' ', $objTest->name));
+        $response = $this->get('materias/filtros?name='. $name);
+        $response->assertSuccessful();
+        $response->assertViewIs('Subjects.ListBuilder.SubjectListBuilder');
+        $response->assertViewHas('active_menu_header');
+        $response->assertViewHas('subjects');
+    }
+
+    /**
      * Test edit().
      */
     public function testEdit()

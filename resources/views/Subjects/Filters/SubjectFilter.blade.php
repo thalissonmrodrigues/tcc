@@ -1,5 +1,5 @@
 <div class="filter-area d-none col-md-4">
-    <form action="{{ route('show.list.subject', ['name' => $subjects[0]->name]) }}" method="GET" class="filters">
+    <form action="{{ route('show.list.subject') }}" method="GET" class="filters">
         <h3>Filtros</h3>
 
         <label>

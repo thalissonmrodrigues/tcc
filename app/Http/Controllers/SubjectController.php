@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Handlers\DataBaseHandler;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,7 @@ class SubjectController extends Controller
 {
     public function __construct()
     {
+        $this->db = new Subject();
         date_default_timezone_set('America/Sao_Paulo');
     }
 
@@ -20,8 +22,7 @@ class SubjectController extends Controller
     public function index()
     {
         $active_menu_header = 'materias';
-        $subjects = Subject::all();
-
+        $subjects = DataBaseHandler::getAll($this->db);
         return view('Subjects.ListBuilder.SubjectListBuilder', compact(
             'active_menu_header',
             'subjects',
@@ -39,7 +40,6 @@ class SubjectController extends Controller
         $action = 'Adicionar Materia';
         $name_subject = '';
         $route_form = true;
-
         return view('Subjects.Forms.SubjectForm', compact(
             'active_menu_header',
             'action',
@@ -60,10 +60,10 @@ class SubjectController extends Controller
             return redirect()->back()->with('danger', 'Não foi possivel criar a matéria!');
         }
 
-        $subject = new Subject();
-        $subject->name = $request->name;
-        $subject->save();
-
+        $data = [
+            'name' => $request->name,
+        ];
+        DataBaseHandler::insert($this->db, $data);
         return redirect(route('list.subject'))->with('success', 'Matéria criada com sucesso!');
     }
 
@@ -76,12 +76,14 @@ class SubjectController extends Controller
     public function show(Request $request)
     {
         if ($request->name) {
-            $subject = Subject::where('name', $request->name)->first();
+            $data = [
+                'name' => $request->name,
+            ];
 
-            if ($subject) {
+            $subjects = DataBaseHandler::get($this->db, $data);
+            if ($subjects) {
                 $active_menu_header = 'materias';
-                $subjects = [$subject];
-
+                $subjects = reset($subjects);
                 return view('Subjects.ListBuilder.SubjectListBuilder', compact(
                     'active_menu_header',
                     'subjects',
@@ -107,10 +109,8 @@ class SubjectController extends Controller
         $active_menu_header = 'materias';
         $action = "Editar Matéria";
         $route_form = false;
-        $entity = Subject::where('id', $id)->first();
-        $name_subject = $entity->name;
-
-
+        $subject = DataBaseHandler::getById($this->db, $id);
+        $name_subject = $subject->name;
         return view('Subjects.Forms.SubjectForm', compact(
             'id',
             'active_menu_header',
@@ -133,10 +133,10 @@ class SubjectController extends Controller
             return redirect()->back()->with('danger', 'Não foi possivel editar a matéria!');
         }
 
-        $entity = Subject::where('id', $id)->first();
-        $entity->name = $request->name;
-        $entity->save();
-
+        $data = [
+            'name' => $request->name,
+        ];
+        DataBaseHandler::update($this->db, $id, $data);
         return redirect(route('list.subject'))->with('success', 'Matéria editada com sucesso!');
     }
 
@@ -148,7 +148,7 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        Subject::destroy($id);
+        DataBaseHandler::delete($this->db, $id);
         return redirect(route('list.subject'))->with('success', 'Matéria excluida com sucesso!');
     }
 }
