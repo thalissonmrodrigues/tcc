@@ -4,15 +4,32 @@ on: [push]
 jobs:
   PHPunit:
     runs-on: ubuntu-latest
+    env:
+      DB_DATABASE: test_db
+      DB_USER: root
+      DB_PASSWORD: root
     steps:
       - uses: actions/checkout@v2
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install dependencies
         run: composer install
       - name: Generate key
         run: php artisan key:generate
+      - name: Run migrate
+        run: php artisan migrate -v
       - name: Run PHPunit
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: test_db
+          DB_USERNAME: "root"
+          DB_PASSWORD: "root"
         run: vendor/bin/phpunit
 
   PHPlint:
@@ -31,4 +48,4 @@ jobs:
       - name: Install dependencies
         run: composer install
       - name: Run PHP CodeStyle (phpcs)
-        run: vendor/bin/phpcs --standard=PSR1,PSR12,phpcs-laravel app/
+        run: vendor/bin/phpcs --standard=PSR1,PSR12 app/

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,25 +82,13 @@ Route::get('/trabalhos/{id_work}/tabalho/{id_send_work}/visualiza', function () 
 })->name('view.correction');
 
 // Subjects.
-Route::get('/materias', function () {
-    return view('Subjects.ListBuilder.SubjectListBuilder', [
-        'active_menu_header' => 'materias'
-    ]);
-})->name('list.subject');
-
-Route::get('/materias/adiciona', function () {
-    return view('Subjects.Forms.SubjectForm', [
-        'active_menu_header' => 'materias',
-        'variavel_dados_temporaria' => FALSE
-    ]);
-})->name('add.subject');
-
-Route::get('/materias/{id_subject}/editar', function () {
-    return view('Subjects.Forms.SubjectForm', [
-        'active_menu_header' => 'materias',
-        'variavel_dados_temporaria' => TRUE
-    ]);
-})->name('edit.subject');
+Route::get('/materias', [SubjectController::class, 'index'])->name('list.subject');
+Route::get('/materias/filtros', [SubjectController::class, 'show'])->name('show.list.subject');
+Route::get('/materias/adiciona', [SubjectController::class, 'create'])->name('add.subject');
+Route::get('/materias/{id_subject}/editar', [SubjectController::class, 'edit'])->name('edit.subject');
+Route::post('/materias/adiciona', [SubjectController::class, 'store'])->name('store.subject');
+Route::post('/materias/{id_subject}/editar', [SubjectController::class, 'update'])->name('update.subject');
+Route::delete('/materias/{id_subject}/delete', [SubjectController::class, 'destroy'])->name('destroy.subject');
 
 // Teachers.
 Route::get('/professores', function () {
