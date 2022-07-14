@@ -16,6 +16,9 @@ class SubjectControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $obj = new Subject();
+        $obj->name = 'Nome da Materia de Test' . rand(1000000, 9999999);
+        $obj->save();
         $this->objTest = Subject::all()->last();
     }
 
