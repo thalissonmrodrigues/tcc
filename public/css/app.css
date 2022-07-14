@@ -30283,6 +30283,15 @@ header {
   background-color: #f2f2f2;
 }
 
+.pagination .page-item .page-link {
+  color: #0aa2c0;
+}
+.pagination .page-item.active .page-link {
+  background-color: #0aa2c0;
+  color: #fff;
+  border-color: #0aa2c0;
+}
+
 .filter-area {
   background-color: #fff;
   border-bottom-left-radius: 6px;

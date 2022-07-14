@@ -20,6 +20,18 @@
   }
 }
 
+.pagination .page-item {
+  .page-link {
+    color: $primary;
+  }
+
+  &.active .page-link {
+    background-color: $primary;
+    color: $white;
+    border-color: $primary;
+  }
+}
+
 .filter-area {
   @include media-breakpoint-up(md) {
     margin-right: 12px;

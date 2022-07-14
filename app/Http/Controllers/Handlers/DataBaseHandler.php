@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class DataBaseHandler
 {
+    /**
+     * Get values in database with pagination.
+     */
+    static function pagination(Model $db)
+    {
+        $pages = $db::paginate();
+
+        return $pages;
+    }
 
     /**
      * Get all values in database.
@@ -36,7 +45,7 @@ class DataBaseHandler
      */
     static function get(Model $db, array $data = [])
     {
-        $tables = $db::where($data)->get();
+        $tables = $db::where($data)->paginate();
 
         return  $tables;
     }

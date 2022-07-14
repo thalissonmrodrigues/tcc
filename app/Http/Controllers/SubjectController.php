@@ -22,10 +22,12 @@ class SubjectController extends Controller
     public function index()
     {
         $active_menu_header = 'materias';
-        $subjects = DataBaseHandler::getAll($this->db);
+        $subjects = DataBaseHandler::pagination($this->db);
+        $dataFilter = [];
         return view('Subjects.ListBuilder.SubjectListBuilder', compact(
             'active_menu_header',
             'subjects',
+            'dataFilter',
         ));
     }
 
@@ -81,12 +83,14 @@ class SubjectController extends Controller
             ];
 
             $subjects = DataBaseHandler::get($this->db, $data);
-            if ($subjects) {
+            if (count($subjects) > 0) {
                 $active_menu_header = 'materias';
-                $subjects = reset($subjects);
+                $subjects = $subjects;
+                $dataFilter = $request->except('_token');
                 return view('Subjects.ListBuilder.SubjectListBuilder', compact(
                     'active_menu_header',
                     'subjects',
+                    'dataFilter',
                 ));
             }
         }
