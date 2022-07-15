@@ -17,7 +17,6 @@ class CreateStudentRoomsTable extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained('students');
             $table->foreignId('classroom_id')->constrained('classrooms');
-            $table->boolean('representative_student');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -132,12 +133,8 @@ Route::get('/alunos/{id_student}/editar', function () {
     ]);
 })->name('edit.student');
 
-// Rooms.
-Route::get('/salas', function () {
-    return view('Classrooms.ListBuilder.ClassroomListBuilder', [
-        'active_menu_header' => 'salas'
-    ]);
-})->name('list.classroom');
+// Classrooms.
+Route::get('/salas', [ClassroomController::class, 'index'])->name('list.classroom');
 
 Route::get('/salas/{id_classroom}/informacoes', function () {
     return view('Classrooms.ListBuilder.ClassroomInfoListBuilder', [
@@ -148,17 +145,10 @@ Route::get('/salas/{id_classroom}/informacoes', function () {
     ]);
 })->name('list.info.classroom');
 
-Route::get('/salas/adiciona', function () {
-    return view('Classrooms.Forms.ClassroomForm', [
-        'active_menu_header' => 'salas',
-        'variavel_dados_temporaria' => FALSE
-    ]);
-})->name('add.classroom');
+Route::get('/salas/adiciona', [ClassroomController::class, 'create'])->name('add.classroom');
+Route::post('/salas/adiciona', [ClassroomController::class, 'store'])->name('store.classroom');
 
-Route::get('/salas/{id_classroom}/editar', function () {
-    return view('Classrooms.Forms.ClassroomForm', [
-        'active_menu_header' => 'salas',
-        'variavel_dados_temporaria' => TRUE
-    ]);
-})->name('edit.classroom');
+Route::get('/salas/{id_classroom}/editar', [ClassroomController::class, 'edit'])->name('edit.classroom');
+Route::post('/salas/{id_classroom}/editar', [ClassroomController::class, 'update'])->name('update.classroom');
+Route::delete('/salas/{id_classroom}/delete', [ClassroomController::class, 'destroy'])->name('destroy.classroom');
 

@@ -18,6 +18,8 @@ class CreateClassroomsTable extends Migration
             $table->integer('serie');
             $table->char('letter');
             $table->string('period');
+            $table->integer('representative_student_id')->nullable();
+            $table->integer('representative_teacher_id')->nullable();
             $table->timestamps();
         });
     }
